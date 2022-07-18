@@ -1,0 +1,201 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0%;
+  font-size: 13px;
+  font-family: $primary-font;
+}
+
+@mixin grid($colstart, $colend, $rowstart, $rowend,$color) {
+  grid-column-start: $colstart;
+  grid-column-end: $colend;
+  grid-row-start: $rowstart;
+  grid-row-end: $rowend;
+  background-color: $color;
+  border-radius: 0.6em;
+  padding: 2em;
+}
+%author{
+    display: flex;
+        
+        align-items: center;
+        gap: 1em;
+        width: 100%;
+        img{
+            border-radius: 50%;
+        }
+}
+%flex-coloum{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    :nth-child(3){
+        flex-grow: 1;
+        font-size: 1em;
+        line-height: 1.54;
+    }
+}
+
+.container {
+  max-width: 1440px;
+  background-color: $Lightgrayishblue;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .grid {
+    // aspect-ratio: 16/9;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2em;
+    .article1 {
+        @extend %flex-coloum;
+        position: relative;
+      @include grid(1, 3, 1, 2,$Moderateviolet);
+      color: $Lightgrayishblue;
+      p{
+          color: rgba($Lightgrayishblue, 0.7)
+     }
+      h2{
+        position: relative;
+        font-size: 1.5em;
+        font-weight: 600;
+        z-index: 100;
+        }
+      .author{
+       @extend %author;
+        p{
+    
+            color:rgba($Lightgrayishblue,0.5);
+        }
+        }
+    .quotations{
+        position: absolute;
+        top: 0%;
+        right: 15%;
+        z-index: 1;
+        
+    }
+    }
+    .article2 {
+        @extend %flex-coloum;
+        @include grid(3, 4, 1, 2,$Verydarkgrayishblue);
+        color: $Lightgrayishblue;
+        p{
+            color: rgba($Lightgrayishblue, 0.7)
+        }
+        h2{
+            font-weight: 600;
+            font-size: 1.5em;
+        }
+        .author{
+            @extend %author;
+            p{
+        
+                color:rgba($Lightgrayishblue,0.5);
+            }
+        }
+    }
+    .article3 {
+        @extend %flex-coloum;
+        @include grid(1, 2, 2, 3,$White);
+        color: $Verydarkgrayishblue;
+        .author{
+            @extend %author;
+            p{
+
+                color:rgba($Verydarkgrayishblue,0.5);
+            }
+        }
+        h2{
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        p{
+            color:rgba($Verydarkgrayishblue,0.7);
+            
+        }
+    }
+    .article4 {
+        @extend %flex-coloum;
+        @include grid(2, 4, 2, 3,$Verydarkblackishblue);
+        color: $Lightgrayishblue;
+        p{
+            color: rgba($Lightgrayishblue, 0.7)
+        }
+        h2{
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .author{
+            @extend %author;
+            p{
+        
+                color:rgba($Lightgrayishblue,0.5);
+            }
+        }
+    }
+    .article5 {
+        @extend %flex-coloum;
+        @include grid(4, 5, 1, 3,$White);
+        color: $Verydarkgrayishblue;
+        .author{
+            @extend %author;
+            p{
+        
+                color:rgba($Verydarkgrayishblue,0.5);
+            }
+        }
+        h2{
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        p{
+            color:rgba($Verydarkgrayishblue,0.7);
+            
+        }
+    }
+}
+}
+@media screen and (max-width: 920px){
+  
+    .container{
+       
+        .grid{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 2em auto;
+            width: 80%;
+            .article1:nth-child(1){width: 48%;}
+            .article2:nth-child(2){width: 48%;}
+            .article3:nth-child(3){width: 48%;}
+            .article4:nth-child(4){width: 48%;}
+            .article5:nth-child(5){width: 48%;}
+            .article5:last-child{width: 100%;}
+        }
+    }
+}
+
+@media screen and (max-width: 600px){
+    *{
+        font-size: 11.5px;
+    }
+    .container{
+        // max-width: 375px;
+        .grid{
+            display: flex;
+            flex-direction: column;
+            margin: 2em auto;
+            width: 80%;
+            .article1:nth-child(1){width: 100%;}
+            .article2:nth-child(2){width: 100%;}
+            .article3:nth-child(3){width: 100%;}
+            .article4:nth-child(4){width: 100%;}
+            .article5:nth-child(5){width: 100%;}
+        }
+    }
+}
